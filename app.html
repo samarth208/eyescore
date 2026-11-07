@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Tells the EyeScore extension not to restyle this page (it would interfere with the tests). -->
+  <meta name="eyescore-site" content="1">
+  <title>EyeScore test: find your screen settings</title>
+  <meta name="description" content="Three short screen tests find your limits on this screen. Published rules turn them into text size, contrast and color settings. Not an eye exam.">
+  <link rel="icon" type="image/png" href="img/icon-32.png">
+  <link rel="preload" href="fonts/urbanist-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-in">
+      <a class="brand" href="index.html" id="brand-home" aria-label="EyeScore home">
+        <img src="img/icon-180.png" alt="" width="28" height="28">
+        <span>EyeScore</span>
+      </a>
+      <div class="progress" id="progress" hidden>
+        <div class="progress-label" id="progress-label"></div>
+        <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+      </div>
+      <div class="ext-pill" id="ext-pill" hidden>Extension connected</div>
+    </div>
+  </header>
+
+  <main id="app" tabindex="-1"></main>
+
+  <footer class="footer">
+    EyeScore finds screen settings on this screen, right now. It is not a medical test and cannot detect eye conditions. For that, see an eye care professional.
+    <a href="privacy.html">Privacy</a>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/util.js"></script>
+  <script src="js/calib.js"></script>
+  <script src="js/exam.js"></script>
+  <script src="js/dalton.js"></script>
+  <script src="js/rx.js"></script>
+  <script src="js/profile.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
