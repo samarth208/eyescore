@@ -14,7 +14,8 @@ window.ES = window.ES || {};
         else if (k === "style" && typeof v === "object") Object.assign(el.style, v);
         else if (k === "dataset") Object.assign(el.dataset, v);
         else if (k === "html") el.innerHTML = v;
-        else if (k.startsWith("on") && typeof v === "function") el.addEventListener(k.slice(2).toLowerCase(), v);
+        else if (k.startsWith("on") && typeof v === "function")
+          el.addEventListener(k.slice(2).toLowerCase(), v);
         else if (v === true) el.setAttribute(k, "");
         else el.setAttribute(k, v);
       }
@@ -34,7 +35,10 @@ window.ES = window.ES || {};
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   const nextFrame = () => new Promise((r) => requestAnimationFrame(() => r()));
   // Resolves after the current DOM changes have been painted, so reaction timers start at stimulus onset.
-  const afterPaint = () => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(() => r(performance.now()))));
+  const afterPaint = () =>
+    new Promise((r) =>
+      requestAnimationFrame(() => requestAnimationFrame(() => r(performance.now()))),
+    );
 
   /* ---------- math ---------- */
   const clamp = (x, lo, hi) => Math.min(hi, Math.max(lo, x));
@@ -65,7 +69,8 @@ window.ES = window.ES || {};
   // Bootstrap probability that the geometric mean of `a` exceeds that of `b`.
   function bootstrapConf(a, b, B = 3000) {
     if (a.length < 2 || b.length < 2) return 0;
-    const la = a.map(Math.log), lb = b.map(Math.log);
+    const la = a.map(Math.log),
+      lb = b.map(Math.log);
     let wins = 0;
     for (let i = 0; i < B; i++) {
       const d = mean(resample(la)) - mean(resample(lb));
@@ -82,28 +87,54 @@ window.ES = window.ES || {};
   function combos(n, k) {
     const key = n + "," + k;
     if (comboCache[key]) return comboCache[key];
-    const out = [], c = [];
+    const out = [],
+      c = [];
     (function rec(start) {
-      if (c.length === k) { out.push(c.slice()); return; }
-      for (let i = start; i < n; i++) { c.push(i); rec(i + 1); c.pop(); }
+      if (c.length === k) {
+        out.push(c.slice());
+        return;
+      }
+      for (let i = start; i < n; i++) {
+        c.push(i);
+        rec(i + 1);
+        c.pop();
+      }
     })(0);
     return (comboCache[key] = out);
   }
-  function nChooseK(n, k) { let r = 1; for (let i = 1; i <= k; i++) r = r * (n - k + i) / i; return r; }
+  function nChooseK(n, k) {
+    let r = 1;
+    for (let i = 1; i <= k; i++) r = (r * (n - k + i)) / i;
+    return r;
+  }
   function permTestP(a, b) {
     if (a.length < 2 || b.length < 2) return 1;
     const all = a.map(Math.log).concat(b.map(Math.log));
-    const n = all.length, k = a.length, total = sum(all);
+    const n = all.length,
+      k = a.length,
+      total = sum(all);
     const obs = mean(all.slice(0, k)) - mean(all.slice(k)) - 1e-12;
-    const diff = (idx) => { let sa = 0; for (const i of idx) sa += all[i]; return sa / k - (total - sa) / (n - k); };
-    let ge = 0, count = 0;
+    const diff = (idx) => {
+      let sa = 0;
+      for (const i of idx) sa += all[i];
+      return sa / k - (total - sa) / (n - k);
+    };
+    let ge = 0,
+      count = 0;
     if (nChooseK(n, k) <= 5000) {
-      for (const c of combos(n, k)) { count++; if (diff(c) >= obs) ge++; }
+      for (const c of combos(n, k)) {
+        count++;
+        if (diff(c) >= obs) ge++;
+      }
     } else {
       const idx = all.map((_, i) => i);
       for (let r = 0; r < 4000; r++) {
-        for (let i = n - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [idx[i], idx[j]] = [idx[j], idx[i]]; }
-        count++; if (diff(idx.slice(0, k)) >= obs) ge++;
+        for (let i = n - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [idx[i], idx[j]] = [idx[j], idx[i]];
+        }
+        count++;
+        if (diff(idx.slice(0, k)) >= obs) ge++;
       }
     }
     return ge / count;
@@ -115,14 +146,24 @@ window.ES = window.ES || {};
       try {
         const v = localStorage.getItem("eyescore:" + key);
         return v === null ? fallback : JSON.parse(v);
-      } catch (e) { return fallback; }
+      } catch (e) {
+        return fallback;
+      }
     },
     set(key, value) {
-      try { localStorage.setItem("eyescore:" + key, JSON.stringify(value)); } catch (e) { /* private mode etc. */ }
+      try {
+        localStorage.setItem("eyescore:" + key, JSON.stringify(value));
+      } catch (e) {
+        /* private mode etc. */
+      }
     },
     remove(key) {
-      try { localStorage.removeItem("eyescore:" + key); } catch (e) { /* ignore */ }
-    }
+      try {
+        localStorage.removeItem("eyescore:" + key);
+      } catch (e) {
+        /* ignore */
+      }
+    },
   };
 
   /* ---------- keyboard ---------- */
@@ -135,27 +176,44 @@ window.ES = window.ES || {};
     if (handled) e.preventDefault();
   });
   const keys = {
-    set(fn) { keyHandler = fn; },
-    clear() { keyHandler = null; }
+    set(fn) {
+      keyHandler = fn;
+    },
+    clear() {
+      keyHandler = null;
+    },
   };
 
   /* ---------- misc UI ---------- */
   let toastTimer = null;
   function toast(msg) {
     let t = $(".toast");
-    if (!t) { t = h("div", { class: "toast", role: "status" }); document.body.appendChild(t); }
+    if (!t) {
+      t = h("div", { class: "toast", role: "status" });
+      document.body.appendChild(t);
+    }
     t.textContent = msg;
     t.hidden = false;
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => { t.hidden = true; }, 2600);
+    toastTimer = setTimeout(() => {
+      t.hidden = true;
+    }, 2600);
   }
   async function copyText(text) {
-    try { await navigator.clipboard.writeText(text); return true; }
-    catch (e) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch (e) {
       const ta = h("textarea", { style: { position: "fixed", opacity: "0" } });
-      ta.value = text; document.body.appendChild(ta); ta.select();
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
       let ok = false;
-      try { ok = document.execCommand("copy"); } catch (e2) { ok = false; }
+      try {
+        ok = document.execCommand("copy");
+      } catch (e2) {
+        ok = false;
+      }
       ta.remove();
       return ok;
     }
@@ -168,7 +226,8 @@ window.ES = window.ES || {};
   class Staircase {
     constructor(o) {
       this.level = o.start;
-      this.min = o.min; this.max = o.max;
+      this.min = o.min;
+      this.max = o.max;
       this.stepFast = o.stepFast || 0.6;
       this.step = o.step || 0.78;
       this.maxTrials = o.maxTrials || 24;
@@ -182,19 +241,34 @@ window.ES = window.ES || {};
       this.history = [];
     }
     get done() {
-      return this.history.length >= this.maxTrials || this.reversals.length >= this.maxReversals || this.floorRun >= 4;
+      return (
+        this.history.length >= this.maxTrials ||
+        this.reversals.length >= this.maxReversals ||
+        this.floorRun >= 4
+      );
     }
     record(correct, actual) {
       const lvl = actual === undefined ? this.level : actual;
       this.history.push({ level: lvl, correct });
-      if (correct && this.level <= this.min * 1.0001) this.floorRun++; else this.floorRun = 0;
+      if (correct && this.level <= this.min * 1.0001) this.floorRun++;
+      else this.floorRun = 0;
       let dir = 0;
       if (this.phase === "fast") {
-        if (correct) dir = -1; else { this.phase = "main"; dir = 1; }
+        if (correct) dir = -1;
+        else {
+          this.phase = "main";
+          dir = 1;
+        }
       } else if (correct) {
         this.correctRun++;
-        if (this.correctRun >= this.nDown) { dir = -1; this.correctRun = 0; }
-      } else { this.correctRun = 0; dir = 1; }
+        if (this.correctRun >= this.nDown) {
+          dir = -1;
+          this.correctRun = 0;
+        }
+      } else {
+        this.correctRun = 0;
+        dir = 1;
+      }
       if (dir !== 0) {
         if (this.lastDir !== 0 && dir !== this.lastDir) this.reversals.push(lvl);
         this.lastDir = dir;
@@ -211,11 +285,38 @@ window.ES = window.ES || {};
   }
 
   /* ---------- environment ---------- */
-  const isExtensionPage = !!(window.chrome && chrome.runtime && chrome.runtime.id && chrome.storage && location.protocol === "chrome-extension:");
+  const isExtensionPage = !!(
+    window.chrome &&
+    chrome.runtime &&
+    chrome.runtime.id &&
+    chrome.storage &&
+    location.protocol === "chrome-extension:"
+  );
   const isTouch = !!(window.matchMedia && matchMedia("(pointer: coarse)").matches);
 
   Object.assign(ES, {
-    h, $, sleep, nextFrame, afterPaint, clamp, randInt, choice, shuffle, sum, mean, median, geomean,
-    bootstrapConf, permTestP, store, keys, toast, copyText, pct, Staircase, isExtensionPage, isTouch
+    h,
+    $,
+    sleep,
+    nextFrame,
+    afterPaint,
+    clamp,
+    randInt,
+    choice,
+    shuffle,
+    sum,
+    mean,
+    median,
+    geomean,
+    bootstrapConf,
+    permTestP,
+    store,
+    keys,
+    toast,
+    copyText,
+    pct,
+    Staircase,
+    isExtensionPage,
+    isTouch,
   });
 })(window.ES);

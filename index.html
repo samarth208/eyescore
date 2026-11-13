@@ -1,387 +1,750 @@
 <!doctype html>
-<html lang="en" data-type="software" data-radius="soft" data-ground="sky" data-buttons="pill" data-motion>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<!-- Tells the EyeScore extension not to restyle this page. -->
-<meta name="eyescore-site" content="1">
-<title>EyeScore: text size and contrast set to your eyes</title>
-<meta name="description" content="Find the right text size and contrast for your eyes through simple visual tests. EyeScore uses your results to automatically adjust supported websites. Not an eye exam.">
-<meta name="site-kind" content="software">
-<meta name="page-type" content="software">
-<link rel="icon" type="image/png" href="img/icon-32.png">
-<!-- an old link to a test (index.html#start) goes on to the test page -->
-<script src="js/landing-route.js"></script>
-<link rel="stylesheet" href="assets/system.css">
-<link rel="stylesheet" href="assets/ui/cards.css">
-<link rel="stylesheet" href="assets/motion/motion.css">
-<link rel="stylesheet" href="assets/layout/layout.css">
-<link rel="stylesheet" href="css/landing.css">
-</head>
-<body>
-<!-- type: software (a Chrome extension and the web test that sets it up)
-     deal: hero split; nav nav-mega; close close-type (footer-statement carries close-type, so the dealt
-     close-word gives way to it); footer footer-statement; rhythm space; buttons dealt tonal, pill kept to
-     match the extension's own buttons; mark: the client's own icon.
-     palette: the extension's own, light from EyeScore blue (#2458f5), dark "night and sky blue"
-     (#0a0d14 / #5ab9fc), following the visitor's light or dark setting; type: Urbanist (dealt), bundled.
-     effect: none; moments: none (the hero's one motion is the click swap of its demo). An eye-test site
-     keeps everything still that the visitor didn't start.
-     screens at 1440: hero 1, tests 1, rules 1, extension 1, modes 2, questions 1, closing 1; on a phone tests,
-     rules, extension and questions take two (.es-g2m: the .es-scr wrappers become the two screens). -->
-
-<header class="nav">
-  <div class="wrap nav__bar">
-    <a class="nav__logo" href="#top"><img src="img/icon-180.png" alt="" width="24" height="24">EyeScore</a>
-    <nav class="nav__links" aria-label="Main">
-      <div class="nav__item">
-        <a class="nav__link" href="#tests">Tests <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <div class="nav__menu">
-          <div class="wrap grid">
-            <div class="menu-col span-3">
-              <p class="t-label">The three tests</p>
-              <a href="#tests">Text size<span>A shrinking letter E</span></a>
-              <a href="#tests">Contrast<span>A fading letter E</span></a>
-              <a href="#tests">Color<span>The tile that's different</span></a>
-            </div>
-            <div class="menu-col span-3">
-              <p class="t-label">Modes</p>
-              <a href="#modes">Night check<span>Light or dark at night</span></a>
-              <a href="#modes">No glasses<span>A second text size</span></a>
-              <a href="#modes">Each screen<span>Results per screen</span></a>
-            </div>
-            <a class="menu-card span-3 start-10" href="#modes">
-              <div class="panel">
-                <div class="stage stage--fade-br"><div class="at-corner" style="--ax: 24px; --ay: 24px">
-                  <div class="es-ui es-ab es-ab--menu" data-ui>
-                    <div class="es-ab__col"><span class="es-ab__tag">A</span><p style="font-size: 14px">Water them at the base in the morning.</p></div>
-                    <div class="es-ab__col"><span class="es-ab__tag">B</span><p style="font-size: 16px">Water them at the base in the morning.</p></div>
+<html lang="en" data-radius="soft" data-ground="sky" data-buttons="pill" data-motion>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <!-- Tells the EyeScore extension not to restyle this page. -->
+    <meta name="eyescore-site" content="1" />
+    <title>EyeScore: text size and contrast set to your eyes</title>
+    <meta
+      name="description"
+      content="Find the right text size and contrast for your eyes through simple visual tests. EyeScore uses your results to automatically adjust supported websites. Not an eye exam."
+    />
+    <meta name="site-kind" content="software" />
+    <link rel="icon" type="image/png" href="img/icon-32.png" />
+    <!-- Redirects legacy test links (index.html#start, #results) to app.html -->
+    <script src="js/landing-route.js"></script>
+    <link rel="stylesheet" href="assets/system.css" />
+    <link rel="stylesheet" href="assets/ui/cards.css" />
+    <link rel="stylesheet" href="assets/motion/motion.css" />
+    <link rel="stylesheet" href="assets/layout/layout.css" />
+    <link rel="stylesheet" href="css/landing.css" />
+  </head>
+  <body>
+    <header class="nav">
+      <div class="wrap nav__bar">
+        <a class="nav__logo" href="#top"
+          ><img src="img/icon-180.png" alt="" width="24" height="24" />EyeScore</a
+        >
+        <nav class="nav__links" aria-label="Main">
+          <div class="nav__item">
+            <a class="nav__link" href="#tests"
+              >Tests
+              <svg class="chev" viewBox="0 0 12 12" aria-hidden="true">
+                <path
+                  d="M3 4.5l3 3 3-3"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                /></svg
+            ></a>
+            <div class="nav__menu">
+              <div class="wrap grid">
+                <div class="menu-col span-3">
+                  <p class="t-label">The three tests</p>
+                  <a href="#tests">Text size<span>A shrinking letter E</span></a>
+                  <a href="#tests">Contrast<span>A fading letter E</span></a>
+                  <a href="#tests">Color<span>The tile that's different</span></a>
+                </div>
+                <div class="menu-col span-3">
+                  <p class="t-label">Modes</p>
+                  <a href="#modes">Night check<span>Light or dark at night</span></a>
+                  <a href="#modes">No glasses<span>A second text size</span></a>
+                  <a href="#modes">Each screen<span>Results per screen</span></a>
+                </div>
+                <a class="menu-card span-3 start-10" href="#modes">
+                  <div class="panel">
+                    <div class="stage stage--fade-br">
+                      <div class="at-corner" style="--ax: 24px; --ay: 24px">
+                        <div class="es-ui es-ab es-ab--menu" data-ui>
+                          <div class="es-ab__col">
+                            <span class="es-ab__tag">A</span>
+                            <p style="font-size: 14px">Water them at the base in the morning.</p>
+                          </div>
+                          <div class="es-ab__col">
+                            <span class="es-ab__tag">B</span>
+                            <p style="font-size: 16px">Water them at the base in the morning.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div></div>
+                  <span class="t-card">Reading comfort check</span>
+                  <span class="t-small muted">Pick between two text sizes</span>
+                </a>
               </div>
-              <span class="t-card">Reading comfort check</span>
-              <span class="t-small muted">Pick between two text sizes</span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="nav__item"><a class="nav__link" href="#rules">Rules</a></div>
-      <div class="nav__item"><a class="nav__link" href="#extension">Extension</a></div>
-      <div class="nav__item"><a class="nav__link" href="#modes">Modes</a></div>
-      <div class="nav__item"><a class="nav__link" href="#faq">Questions</a></div>
-    </nav>
-    <div class="nav__actions">
-      <a class="btn btn--primary" href="app.html#start">Start the 4-minute test<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
-    </div>
-    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
-      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-    </button>
-  </div>
-</header>
-
-<main id="top">
-  <section class="hero hero--split" aria-labelledby="hero-h">
-    <div class="wrap"><div class="hero-text grid hero__grid">
-      <div class="hero__text span-6">
-        <p class="hero__kicker">Three tests, about 4 minutes, no account</p>
-        <h1 id="hero-h">Text size and contrast set to your eyes</h1>
-        <p class="hero__lead">EyeScore measures what you can see clearly, then personalizes websites to make reading easier.</p>
-        <div class="btn-row">
-          <a class="btn btn--primary" href="app.html#start">Start the 4-minute test<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
-          <a class="btn btn--secondary" href="#extension" data-store-link>See the extension</a>
-        </div>
-      </div>
-      <div class="hero__media es-hero span-6 start-7" data-visual>
-        <div class="es-win" data-ui role="img" aria-label="A gardening article on a website, its text enlarged and darkened by EyeScore">
-          <div class="es-win__bar"><span class="es-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="es-win__tab">Keeping houseplants alive in winter</span></div>
-          <div class="es-page" data-es-page>
-            <p class="es-page__site">Greenhouse Notes</p>
-            <p class="es-page__title">Keeping houseplants alive in winter</p>
-            <p class="es-page__by">Gardening · 6 min read</p>
-            <p class="es-page__p">Shorter days change what houseplants need.</p>
-            <p class="es-page__p">Most of them slow down in winter, so they drink less and stop putting out new leaves.</p>
-            <p class="es-page__p">Check the soil before you water. Push a finger about two centimeters into the pot. If it's still damp, wait a few days.</p>
-          </div>
-        </div>
-        <div class="ly-float es-pop" data-ui>
-          <div class="es-pop__head"><img src="img/icon-32.png" alt="" width="20" height="20" loading="lazy"><span>EyeScore</span><span class="es-pop__on" data-es-state>Active</span></div>
-          <div class="es-pop__stats">
-            <div><b>19px</b><span>Text minimum</span></div>
-            <div><b>Boost</b><span>Contrast</span></div>
-          </div>
-          <button class="btn btn--secondary btn--sm es-pop__btn" type="button" data-es-toggle aria-pressed="false">Preview the original page</button>
-        </div>
-      </div>
-    </div></div>
-  </section>
-
-  <section class="section es-g2m" id="tests" aria-labelledby="tests-h">
-    <div class="wrap">
-      <div class="grid es-2">
-        <div class="es-scr">
-          <div class="section-head es-head">
-            <h2 id="tests-h">Three tests, about four minutes. <span class="muted">Nothing flashes and nothing is timed.</span></h2>
-          </div>
-          <article class="card card--row card--open span-4 es-tcard">
-            <span class="step-num">1</span>
-            <h3>Text size test</h3>
-            <p>Say which way the E points as it shrinks. Your minimum text is twice the smallest one you read.</p>
-            <div class="panel">
-              <div class="stage stage--fade-b"><div class="at-rise fit" style="--ax: max(24px, 50% - 130px); --ay: 40px; --ay-sm: 24px; --fit-max: 260px">
-                <div class="es-ui es-test" data-ui>
-                  <div class="es-test__stage"><svg class="es-e" viewBox="0 0 5 5" width="56" height="56" aria-hidden="true"><path d="M0 0h5v1H1v1h4v1H1v1h4v1H0z"/></svg></div>
-                  <p class="es-test__q">Which way does the E point?</p>
-                  <div class="es-keys" aria-hidden="true"><span>&#8593;</span><span>&#8592;</span><span>&#8595;</span><span class="is-on">&#8594;</span></div>
-                </div>
-              </div></div>
             </div>
-          </article>
-        </div>
-        <div class="es-scr">
-          <article class="card card--row card--open span-4 es-tcard">
-            <span class="step-num">2</span>
-            <h3>Contrast test</h3>
-            <p>The same E fades until you lose it. Gray text gets darker if it's too faint for you.</p>
-            <div class="panel">
-              <div class="stage stage--fade-b"><div class="at-rise fit" style="--ax: max(24px, 50% - 130px); --ay: 40px; --ay-sm: 24px; --fit-max: 260px">
-                <div class="es-ui es-test" data-ui>
-                  <div class="es-test__stage es-test__stage--fade"><svg class="es-e" viewBox="0 0 5 5" width="32" height="32" aria-hidden="true" style="transform: rotate(90deg)"><path d="M0 0h5v1H1v1h4v1H1v1h4v1H0z"/></svg></div>
-                  <p class="es-test__q">Which way does the E point?</p>
-                  <div class="es-keys" aria-hidden="true"><span>&#8593;</span><span>&#8592;</span><span class="is-on">&#8595;</span><span>&#8594;</span></div>
-                </div>
-              </div></div>
-            </div>
-          </article>
-          <article class="card card--row card--open span-4 es-tcard">
-            <span class="step-num">3</span>
-            <h3>Color test</h3>
-            <p>Four tiles, one slightly off. If one color direction is harder for you, color assist turns on.</p>
-            <div class="panel">
-              <div class="stage stage--fade-b"><div class="at-rise fit" style="--ax: max(24px, 50% - 130px); --ay: 40px; --ay-sm: 24px; --fit-max: 260px">
-                <div class="es-ui es-test" data-ui>
-                  <div class="es-tiles" aria-hidden="true"><i style="background: rgb(150, 151, 150)"></i><i style="background: rgb(146, 147, 147)"></i><i style="background: rgb(161, 145, 139)"></i><i style="background: rgb(153, 153, 152)"></i></div>
-                  <p class="es-test__q">Which tile is a different color?</p>
-                </div>
-              </div></div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section es-g2m" id="rules" aria-labelledby="rules-h">
-    <div class="wrap">
-      <div class="grid es-2 es-rules">
-        <div class="es-scr">
-          <div class="section-head es-head">
-            <h2 id="rules-h">Each setting comes from a published rule. <span class="muted">Clear it with room to spare and nothing changes.</span></h2>
           </div>
-          <ul class="rows rows--spec span-6 es-rules__list">
-            <li><span class="rows__name">Text size</span><p>Text height at least twice the smallest E you can read.</p><span class="rows__value">Legge and Bigelow, 2011</span></li>
-            <li><span class="rows__name">Contrast</span><p>Text contrast at least ten times the faintest E you see, never below four.</p><span class="rows__value">Whittaker and Lovie-Kitchin, 1994</span></li>
-            <li><span class="rows__name">Color</span><p>Your limits in three color directions, against reference limits.</p><span class="rows__value">Cambridge Colour Test</span></li>
-            <li><span class="rows__name">Night</span><p>Dark mode only if your limit there is better by 0.15 log units.</p><span class="rows__value">Mars chart retest range</span></li>
-          </ul>
+          <div class="nav__item"><a class="nav__link" href="#rules">Rules</a></div>
+          <div class="nav__item"><a class="nav__link" href="#extension">Extension</a></div>
+          <div class="nav__item"><a class="nav__link" href="#modes">Modes</a></div>
+          <div class="nav__item"><a class="nav__link" href="#faq">Questions</a></div>
+        </nav>
+        <div class="nav__actions">
+          <a class="btn btn--primary" href="app.html#start"
+            >Start the 4-minute test<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true">
+              <path class="m-arrow__stem" d="M1 6h8" />
+              <path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5" /></svg
+          ></a>
         </div>
-        <div class="es-scr">
-          <div class="panel span-6 start-7 es-rules__panel" data-visual>
-            <div class="stage"><div class="at-center">
-              <div class="es-ui es-rule" data-ui data-es-rule>
-                <div class="es-rule__row">
-                  <label class="es-rule__label" for="es-rule-e">Smallest E you can read</label>
-                  <span class="es-rule__e"><svg class="es-e" viewBox="0 0 5 5" aria-hidden="true" data-es-e-svg><path d="M0 0h5v1H1v1h4v1H1v1h4v1H0z"/></svg><b data-es-e>4.6px</b></span>
-                </div>
-                <input class="es-rule__range" id="es-rule-e" type="range" min="3" max="8" step="0.1" value="4.6" aria-describedby="es-rule-out">
-                <div class="es-rule__out" id="es-rule-out" aria-live="polite">
-                  <span>Text minimum</span><b data-es-min>18px</b>
-                </div>
-                <p class="es-rule__sample" data-es-sample>The library opens at nine on weekdays.</p>
-                <p class="es-rule__verdict" data-es-verdict>Typical 16px text is 1.8&times; your limit, so EyeScore enlarges it to 18px.</p>
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
+          <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+            <path
+              d="M2 5h14M2 13h14"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero hero--split" aria-labelledby="hero-h">
+        <div class="wrap">
+          <div class="hero-text grid hero__grid">
+            <div class="hero__text span-6">
+              <p class="hero__kicker">Three tests, about 4 minutes, no account</p>
+              <h1 id="hero-h">Text size and contrast set to your eyes</h1>
+              <p class="hero__lead">
+                EyeScore measures what you can see clearly, then personalizes websites to make
+                reading easier.
+              </p>
+              <div class="btn-row">
+                <a class="btn btn--primary" href="app.html#start"
+                  >Start the 4-minute test<svg
+                    class="m-arrow"
+                    viewBox="0 0 12 12"
+                    aria-hidden="true"
+                  >
+                    <path class="m-arrow__stem" d="M1 6h8" />
+                    <path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5" /></svg
+                ></a>
+                <a class="btn btn--secondary" href="#extension" data-store-link
+                  >See the extension</a
+                >
               </div>
-            </div></div>
-          </div>
-          <p class="es-note span-6">EyeScore is not an eye exam and can't detect eye conditions. If reading has become harder for you, see an eye care professional.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section es-g2m" id="extension" aria-labelledby="extension-h">
-    <div class="wrap">
-      <div class="grid es-2 es-split">
-        <div class="es-scr">
-          <div class="span-5 es-split__text">
-            <h2 id="extension-h">Your settings on the websites you read</h2>
-            <p class="t-lead">EyeScore adjusts text size and contrast while preserving website layouts wherever possible. When an adjustment can't be fully applied, it lets you know.</p>
-            <ul class="es-facts">
-              <li>Turn it off on any site, and it remembers</li>
-              <li>Preview the original page at any time</li>
-              <li>Your results stay in your browser</li>
-            </ul>
-            <a class="link" href="#rules">See how each setting is chosen</a>
-          </div>
-        </div>
-        <div class="es-scr">
-          <div class="frame frame--split span-6 start-7" data-visual>
-            <div class="stage stage--fade-b"><div class="at-rise to-edge" style="--w: 360px; --ay: 48px; --ay-sm: 24px; --cut: 40px">
-              <div class="es-ui es-popup" data-ui role="img" aria-label="The EyeScore extension's window on usaco.org: text enlarged to 125%, its screen profile and display modes">
-                <div class="es-popup__top"><img src="img/icon-32.png" alt="" width="26" height="26" loading="lazy"><span class="es-popup__name">EyeScore</span><span class="es-popup__status"><i></i>Active</span></div>
-                <div class="es-popup__site"><span class="es-popup__host"><i></i>usaco.org</span><span class="es-switch is-on" aria-hidden="true"></span></div>
-                <div class="es-popup__size"><span>Text size here</span><span class="es-step"><span>&#8722;</span><b>125%</b><span>+</span></span></div>
-                <div class="es-popup__card">
-                  <div class="es-popup__cardhead"><span>Your screen profile</span><span class="es-popup__why">See why</span></div>
-                  <div class="es-popup__stats"><div><b>19px</b><span>Text minimum</span></div><div><b>Boost</b><span>Contrast</span></div><div><b>Off</b><span>Color assist</span></div></div>
+            </div>
+            <div class="hero__media es-hero span-6 start-7" data-visual>
+              <div
+                class="es-win"
+                data-ui
+                role="img"
+                aria-label="A gardening article on a website, its text enlarged and darkened by EyeScore"
+              >
+                <div class="es-win__bar">
+                  <span class="es-dots" aria-hidden="true"><i></i><i></i><i></i></span
+                  ><span class="es-win__tab">Keeping houseplants alive in winter</span>
                 </div>
-                <p class="es-popup__label">Display mode</p>
-                <div class="es-modes">
-                  <span class="is-on"><b>Everyday</b><small>Your settings</small></span>
-                  <span><b>Night</b><small>Dark · 80%</small></span>
-                  <span><b>No glasses</b><small>At least 27px</small></span>
-                  <span><b>Focus</b><small>Narrower lines</small></span>
+                <div class="es-page" data-es-page>
+                  <p class="es-page__site">Greenhouse Notes</p>
+                  <p class="es-page__title">Keeping houseplants alive in winter</p>
+                  <p class="es-page__by">Gardening · 6 min read</p>
+                  <p class="es-page__p">Shorter days change what houseplants need.</p>
+                  <p class="es-page__p">
+                    Most of them slow down in winter, so they drink less and stop putting out new
+                    leaves.
+                  </p>
+                  <p class="es-page__p">
+                    Check the soil before you water. Push a finger about two centimeters into the
+                    pot. If it's still damp, wait a few days.
+                  </p>
                 </div>
-                <span class="es-popup__btn">Preview the original page</span>
               </div>
-            </div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section es-g2m" id="modes" aria-labelledby="modes-h">
-    <div class="wrap">
-      <div class="grid es-2 es-mgrid">
-        <div class="es-scr">
-          <div class="section-head es-head">
-            <h2 id="modes-h">Modes for night, glasses and each screen</h2>
-          </div>
-          <article class="card card--row card--open span-3 es-mcard">
-            <h3>Night check</h3>
-            <p>The contrast test in light and dark mode, at night. Pages turn dark only if that's clearly better for you.</p>
-            <div class="panel">
-              <div class="stage"><div class="at-center">
-                <div class="es-ui es-night" data-ui>
-                  <div class="es-night__pane"><svg class="es-e" viewBox="0 0 5 5" width="30" height="30" aria-hidden="true"><path d="M0 0h5v1H1v1h4v1H1v1h4v1H0z"/></svg><span>Light · 2.1%</span></div>
-                  <div class="es-night__pane es-night__pane--dark"><svg class="es-e" viewBox="0 0 5 5" width="30" height="30" aria-hidden="true"><path d="M0 0h5v1H1v1h4v1H1v1h4v1H0z"/></svg><span>Dark · 1.2%</span></div>
+              <div class="ly-float es-pop" data-ui>
+                <div class="es-pop__head">
+                  <img src="img/icon-32.png" alt="" width="20" height="20" loading="lazy" /><span
+                    >EyeScore</span
+                  ><span class="es-pop__on" data-es-state>Active</span>
                 </div>
-              </div></div>
-            </div>
-          </article>
-          <article class="card card--row card--open span-3 es-mcard">
-            <h3>No-glasses mode</h3>
-            <p>Take the size test once without your glasses. One click then switches supported websites to that size.</p>
-            <div class="panel">
-              <div class="stage"><div class="at-center">
-                <div class="es-ui es-tilesui" data-ui>
-                  <span><b>Everyday</b><small>Your settings</small></span>
-                  <span><b>Night</b><small>Dark · 80%</small></span>
-                  <span class="is-on"><b>No glasses</b><small>At least 27px</small></span>
-                  <span><b>Focus</b><small>Narrower lines</small></span>
+                <div class="es-pop__stats">
+                  <div><b>19px</b><span>Text minimum</span></div>
+                  <div><b>Boost</b><span>Contrast</span></div>
                 </div>
-              </div></div>
-            </div>
-          </article>
-        </div>
-        <div class="es-scr">
-          <article class="card card--row card--open span-3 es-mcard">
-            <h3>A profile for each screen</h3>
-            <p>A laptop and a monitor keep their own results, and EyeScore picks the right ones on each.</p>
-            <div class="panel">
-              <div class="stage"><div class="at-center">
-                <div class="es-ui es-screens" data-ui>
-                  <div class="es-screens__row is-on"><span><b>Laptop</b><small>This screen</small></span><em>19px</em></div>
-                  <div class="es-screens__row"><span><b>Monitor</b><small>2560 × 1440</small></span><em>16px</em></div>
-                  <div class="es-screens__row"><span><b>Living-room TV</b><small>1920 × 1080</small></span><em>24px</em></div>
-                </div>
-              </div></div>
-            </div>
-          </article>
-          <article class="card card--row card--open span-3 es-mcard">
-            <h3>Reading comfort check</h3>
-            <p>Read a passage at your size and 15% bigger, side by side, and keep the one you prefer.</p>
-            <div class="panel">
-              <div class="stage"><div class="at-center">
-                <div class="es-ui es-ab" data-ui>
-                  <div class="es-ab__col"><span class="es-ab__tag">A</span><p style="font-size: 15px">Sun and steady water.</p></div>
-                  <div class="es-ab__col"><span class="es-ab__tag">B</span><p style="font-size: 17.25px">Sun and steady water.</p></div>
-                  <div class="es-ab__keys" aria-hidden="true"><span>A</span><span>About the same</span><span class="is-on">B</span></div>
-                </div>
-              </div></div>
-            </div>
-          </article>
-          <a class="link es-mlink" href="app.html#start">Take the test first</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section es-g2m" id="faq" aria-labelledby="faq-h">
-    <div class="wrap">
-      <div class="grid es-2 es-faq">
-        <div class="es-scr">
-          <div class="span-5 es-faq__head">
-            <h2 id="faq-h">Questions</h2>
-            <p class="t-lead muted es-faq__lead">About the tests, your data and the extension.</p>
-          </div>
-          <div class="faq span-6 start-7">
-            <div class="faq__item"><h3>Is EyeScore an eye exam?</h3><p>No. It finds settings for this screen and can't detect eye conditions.</p></div>
-            <div class="faq__item"><h3>Where does EyeScore keep my results?</h3><p>In your browser, on your own computer. Nothing is sent anywhere, and there's no account.</p></div>
-            <div class="faq__item"><h3>Does EyeScore cost anything?</h3><p>No. The tests and the extension are free.</p></div>
-            <div class="faq__item"><h3>Will EyeScore break the websites I use?</h3><p>It keeps each site's desktop layout and checks it after enlarging. You can turn it off on any site.</p></div>
-            <div class="faq__item"><h3>Why does EyeScore need full brightness?</h3><p>Your limits depend on the screen, so the same brightness and distance keep results steady.</p></div>
-          </div>
-        </div>
-        <div class="es-scr">
-          <div class="panel span-5 es-faq__panel" data-visual>
-            <div class="stage stage--fade-b"><div class="at-rise fit" style="--ax: max(24px, 50% - 170px); --ay: 40px; --ay-sm: 24px; --fit-max: 340px">
-              <div class="es-ui es-settings" data-ui role="img" aria-label="The extension's settings: EyeScore on all websites, two sites turned off, and its data note">
-                <div class="es-settings__top"><span class="es-settings__back">&#8249; Back</span><b>Settings</b></div>
-                <div class="es-settings__row"><span>EyeScore on all websites</span><span class="es-switch is-on" aria-hidden="true"></span></div>
-                <p class="es-settings__sum">Sites you turned off (2)</p>
-                <ul class="es-settings__list"><li><span>chess.com</span><span class="es-settings__link">Turn back on</span></li><li><span>desmos.com</span><span class="es-settings__link">Turn back on</span></li></ul>
-                <p class="es-settings__note">Your results and settings stay in this browser. EyeScore reads each page's text sizes and colors only to adjust them, and sends nothing anywhere.</p>
+                <button
+                  class="btn btn--secondary btn--sm es-pop__btn"
+                  type="button"
+                  data-es-toggle
+                  aria-pressed="false"
+                >
+                  Preview the original page
+                </button>
               </div>
-            </div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section es-g2m" id="tests" aria-labelledby="tests-h">
+        <div class="wrap">
+          <div class="grid es-2">
+            <div class="es-scr">
+              <div class="section-head es-head">
+                <h2 id="tests-h">
+                  Three tests, about four minutes.
+                  <span class="muted">Nothing flashes and nothing is timed.</span>
+                </h2>
+              </div>
+              <article class="card card--row card--open span-4 es-tcard">
+                <span class="step-num">1</span>
+                <h3>Text size test</h3>
+                <p>
+                  Say which way the E points as it shrinks. Your minimum text is twice the smallest
+                  one you read.
+                </p>
+                <div class="panel">
+                  <div class="stage stage--fade-b">
+                    <div
+                      class="at-rise fit"
+                      style="
+                        --ax: max(24px, 50% - 130px);
+                        --ay: 40px;
+                        --ay-sm: 24px;
+                        --fit-max: 260px;
+                      "
+                    >
+                      <div class="es-ui es-test" data-ui>
+                        <div class="es-test__stage">
+                          <svg
+                            class="es-e"
+                            viewBox="0 0 5 5"
+                            width="56"
+                            height="56"
+                            aria-hidden="true"
+                          >
+                            <path d="M0 0h5v1H1v1h4v1H1v1h4v1H0z" />
+                          </svg>
+                        </div>
+                        <p class="es-test__q">Which way does the E point?</p>
+                        <div class="es-keys" aria-hidden="true">
+                          <span>&#8593;</span><span>&#8592;</span><span>&#8595;</span
+                          ><span class="is-on">&#8594;</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="es-scr">
+              <article class="card card--row card--open span-4 es-tcard">
+                <span class="step-num">2</span>
+                <h3>Contrast test</h3>
+                <p>
+                  The same E fades until you lose it. Gray text gets darker if it's too faint for
+                  you.
+                </p>
+                <div class="panel">
+                  <div class="stage stage--fade-b">
+                    <div
+                      class="at-rise fit"
+                      style="
+                        --ax: max(24px, 50% - 130px);
+                        --ay: 40px;
+                        --ay-sm: 24px;
+                        --fit-max: 260px;
+                      "
+                    >
+                      <div class="es-ui es-test" data-ui>
+                        <div class="es-test__stage es-test__stage--fade">
+                          <svg
+                            class="es-e"
+                            viewBox="0 0 5 5"
+                            width="32"
+                            height="32"
+                            aria-hidden="true"
+                            style="transform: rotate(90deg)"
+                          >
+                            <path d="M0 0h5v1H1v1h4v1H1v1h4v1H0z" />
+                          </svg>
+                        </div>
+                        <p class="es-test__q">Which way does the E point?</p>
+                        <div class="es-keys" aria-hidden="true">
+                          <span>&#8593;</span><span>&#8592;</span><span class="is-on">&#8595;</span
+                          ><span>&#8594;</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <article class="card card--row card--open span-4 es-tcard">
+                <span class="step-num">3</span>
+                <h3>Color test</h3>
+                <p>
+                  Four tiles, one slightly off. If one color direction is harder for you, color
+                  assist turns on.
+                </p>
+                <div class="panel">
+                  <div class="stage stage--fade-b">
+                    <div
+                      class="at-rise fit"
+                      style="
+                        --ax: max(24px, 50% - 130px);
+                        --ay: 40px;
+                        --ay-sm: 24px;
+                        --fit-max: 260px;
+                      "
+                    >
+                      <div class="es-ui es-test" data-ui>
+                        <div class="es-tiles" aria-hidden="true">
+                          <i style="background: rgb(150, 151, 150)"></i
+                          ><i style="background: rgb(146, 147, 147)"></i
+                          ><i style="background: rgb(161, 145, 139)"></i
+                          ><i style="background: rgb(153, 153, 152)"></i>
+                        </div>
+                        <p class="es-test__q">Which tile is a different color?</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section es-g2m" id="rules" aria-labelledby="rules-h">
+        <div class="wrap">
+          <div class="grid es-2 es-rules">
+            <div class="es-scr">
+              <div class="section-head es-head">
+                <h2 id="rules-h">
+                  Each setting comes from a published rule.
+                  <span class="muted">Clear it with room to spare and nothing changes.</span>
+                </h2>
+              </div>
+              <ul class="rows rows--spec span-6 es-rules__list">
+                <li>
+                  <span class="rows__name">Text size</span>
+                  <p>Text height at least twice the smallest E you can read.</p>
+                  <span class="rows__value">Legge and Bigelow, 2011</span>
+                </li>
+                <li>
+                  <span class="rows__name">Contrast</span>
+                  <p>Text contrast at least ten times the faintest E you see, never below four.</p>
+                  <span class="rows__value">Whittaker and Lovie-Kitchin, 1994</span>
+                </li>
+                <li>
+                  <span class="rows__name">Color</span>
+                  <p>Your limits in three color directions, against reference limits.</p>
+                  <span class="rows__value">Cambridge Colour Test</span>
+                </li>
+                <li>
+                  <span class="rows__name">Night</span>
+                  <p>Dark mode only if your limit there is better by 0.15 log units.</p>
+                  <span class="rows__value">Mars chart retest range</span>
+                </li>
+              </ul>
+            </div>
+            <div class="es-scr">
+              <div class="panel span-6 start-7 es-rules__panel" data-visual>
+                <div class="stage">
+                  <div class="at-center">
+                    <div class="es-ui es-rule" data-ui data-es-rule>
+                      <div class="es-rule__row">
+                        <label class="es-rule__label" for="es-rule-e"
+                          >Smallest E you can read</label
+                        >
+                        <span class="es-rule__e"
+                          ><svg class="es-e" viewBox="0 0 5 5" aria-hidden="true" data-es-e-svg>
+                            <path d="M0 0h5v1H1v1h4v1H1v1h4v1H0z" /></svg
+                          ><b data-es-e>4.6px</b></span
+                        >
+                      </div>
+                      <input
+                        class="es-rule__range"
+                        id="es-rule-e"
+                        type="range"
+                        min="3"
+                        max="8"
+                        step="0.1"
+                        value="4.6"
+                        aria-describedby="es-rule-out"
+                      />
+                      <div class="es-rule__out" id="es-rule-out" aria-live="polite">
+                        <span>Text minimum</span><b data-es-min>18px</b>
+                      </div>
+                      <p class="es-rule__sample" data-es-sample>
+                        The library opens at nine on weekdays.
+                      </p>
+                      <p class="es-rule__verdict" data-es-verdict>
+                        Typical 16px text is 1.8&times; your limit, so EyeScore enlarges it to 18px.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="es-note span-6">
+                EyeScore is not an eye exam and can't detect eye conditions. If reading has become
+                harder for you, see an eye care professional.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section es-g2m" id="extension" aria-labelledby="extension-h">
+        <div class="wrap">
+          <div class="grid es-2 es-split">
+            <div class="es-scr">
+              <div class="span-5 es-split__text">
+                <h2 id="extension-h">Your settings on the websites you read</h2>
+                <p class="t-lead">
+                  EyeScore adjusts text size and contrast while preserving website layouts wherever
+                  possible. When an adjustment can't be fully applied, it lets you know.
+                </p>
+                <ul class="es-facts">
+                  <li>Turn it off on any site, and it remembers</li>
+                  <li>Preview the original page at any time</li>
+                  <li>Your results stay in your browser</li>
+                </ul>
+                <a class="link" href="#rules">See how each setting is chosen</a>
+              </div>
+            </div>
+            <div class="es-scr">
+              <div class="frame frame--split span-6 start-7" data-visual>
+                <div class="stage stage--fade-b">
+                  <div
+                    class="at-rise to-edge"
+                    style="--w: 360px; --ay: 48px; --ay-sm: 24px; --cut: 40px"
+                  >
+                    <div
+                      class="es-ui es-popup"
+                      data-ui
+                      role="img"
+                      aria-label="The EyeScore extension's window on usaco.org: text enlarged to 125%, its screen profile and display modes"
+                    >
+                      <div class="es-popup__top">
+                        <img
+                          src="img/icon-32.png"
+                          alt=""
+                          width="26"
+                          height="26"
+                          loading="lazy"
+                        /><span class="es-popup__name">EyeScore</span
+                        ><span class="es-popup__status"><i></i>Active</span>
+                      </div>
+                      <div class="es-popup__site">
+                        <span class="es-popup__host"><i></i>usaco.org</span
+                        ><span class="es-switch is-on" aria-hidden="true"></span>
+                      </div>
+                      <div class="es-popup__size">
+                        <span>Text size here</span
+                        ><span class="es-step"><span>&#8722;</span><b>125%</b><span>+</span></span>
+                      </div>
+                      <div class="es-popup__card">
+                        <div class="es-popup__cardhead">
+                          <span>Your screen profile</span><span class="es-popup__why">See why</span>
+                        </div>
+                        <div class="es-popup__stats">
+                          <div><b>19px</b><span>Text minimum</span></div>
+                          <div><b>Boost</b><span>Contrast</span></div>
+                          <div><b>Off</b><span>Color assist</span></div>
+                        </div>
+                      </div>
+                      <p class="es-popup__label">Display mode</p>
+                      <div class="es-modes">
+                        <span class="is-on"><b>Everyday</b><small>Your settings</small></span>
+                        <span><b>Night</b><small>Dark · 80%</small></span>
+                        <span><b>No glasses</b><small>At least 27px</small></span>
+                        <span><b>Focus</b><small>Narrower lines</small></span>
+                      </div>
+                      <span class="es-popup__btn">Preview the original page</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section es-g2m" id="modes" aria-labelledby="modes-h">
+        <div class="wrap">
+          <div class="grid es-2 es-mgrid">
+            <div class="es-scr">
+              <div class="section-head es-head">
+                <h2 id="modes-h">Modes for night, glasses and each screen</h2>
+              </div>
+              <article class="card card--row card--open span-3 es-mcard">
+                <h3>Night check</h3>
+                <p>
+                  The contrast test in light and dark mode, at night. Pages turn dark only if that's
+                  clearly better for you.
+                </p>
+                <div class="panel">
+                  <div class="stage">
+                    <div class="at-center">
+                      <div class="es-ui es-night" data-ui>
+                        <div class="es-night__pane">
+                          <svg
+                            class="es-e"
+                            viewBox="0 0 5 5"
+                            width="30"
+                            height="30"
+                            aria-hidden="true"
+                          >
+                            <path d="M0 0h5v1H1v1h4v1H1v1h4v1H0z" /></svg
+                          ><span>Light · 2.1%</span>
+                        </div>
+                        <div class="es-night__pane es-night__pane--dark">
+                          <svg
+                            class="es-e"
+                            viewBox="0 0 5 5"
+                            width="30"
+                            height="30"
+                            aria-hidden="true"
+                          >
+                            <path d="M0 0h5v1H1v1h4v1H1v1h4v1H0z" /></svg
+                          ><span>Dark · 1.2%</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <article class="card card--row card--open span-3 es-mcard">
+                <h3>No-glasses mode</h3>
+                <p>
+                  Take the size test once without your glasses. One click then switches supported
+                  websites to that size.
+                </p>
+                <div class="panel">
+                  <div class="stage">
+                    <div class="at-center">
+                      <div class="es-ui es-tilesui" data-ui>
+                        <span><b>Everyday</b><small>Your settings</small></span>
+                        <span><b>Night</b><small>Dark · 80%</small></span>
+                        <span class="is-on"><b>No glasses</b><small>At least 27px</small></span>
+                        <span><b>Focus</b><small>Narrower lines</small></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="es-scr">
+              <article class="card card--row card--open span-3 es-mcard">
+                <h3>A profile for each screen</h3>
+                <p>
+                  A laptop and a monitor keep their own results, and EyeScore picks the right ones
+                  on each.
+                </p>
+                <div class="panel">
+                  <div class="stage">
+                    <div class="at-center">
+                      <div class="es-ui es-screens" data-ui>
+                        <div class="es-screens__row is-on">
+                          <span><b>Laptop</b><small>This screen</small></span
+                          ><em>19px</em>
+                        </div>
+                        <div class="es-screens__row">
+                          <span><b>Monitor</b><small>2560 × 1440</small></span
+                          ><em>16px</em>
+                        </div>
+                        <div class="es-screens__row">
+                          <span><b>Living-room TV</b><small>1920 × 1080</small></span
+                          ><em>24px</em>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <article class="card card--row card--open span-3 es-mcard">
+                <h3>Reading comfort check</h3>
+                <p>
+                  Read a passage at your size and 15% bigger, side by side, and keep the one you
+                  prefer.
+                </p>
+                <div class="panel">
+                  <div class="stage">
+                    <div class="at-center">
+                      <div class="es-ui es-ab" data-ui>
+                        <div class="es-ab__col">
+                          <span class="es-ab__tag">A</span>
+                          <p style="font-size: 15px">Sun and steady water.</p>
+                        </div>
+                        <div class="es-ab__col">
+                          <span class="es-ab__tag">B</span>
+                          <p style="font-size: 17.25px">Sun and steady water.</p>
+                        </div>
+                        <div class="es-ab__keys" aria-hidden="true">
+                          <span>A</span><span>About the same</span><span class="is-on">B</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <a class="link es-mlink" href="app.html#start">Take the test first</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section es-g2m" id="faq" aria-labelledby="faq-h">
+        <div class="wrap">
+          <div class="grid es-2 es-faq">
+            <div class="es-scr">
+              <div class="span-5 es-faq__head">
+                <h2 id="faq-h">Questions</h2>
+                <p class="t-lead muted es-faq__lead">
+                  About the tests, your data and the extension.
+                </p>
+              </div>
+              <div class="faq span-6 start-7">
+                <div class="faq__item">
+                  <h3>Is EyeScore an eye exam?</h3>
+                  <p>No. It finds settings for this screen and can't detect eye conditions.</p>
+                </div>
+                <div class="faq__item">
+                  <h3>Where does EyeScore keep my results?</h3>
+                  <p>
+                    In your browser, on your own computer. Nothing is sent anywhere, and there's no
+                    account.
+                  </p>
+                </div>
+                <div class="faq__item">
+                  <h3>Does EyeScore cost anything?</h3>
+                  <p>No. The tests and the extension are free.</p>
+                </div>
+                <div class="faq__item">
+                  <h3>Will EyeScore break the websites I use?</h3>
+                  <p>
+                    It keeps each site's desktop layout and checks it after enlarging. You can turn
+                    it off on any site.
+                  </p>
+                </div>
+                <div class="faq__item">
+                  <h3>Why does EyeScore need full brightness?</h3>
+                  <p>
+                    Your limits depend on the screen, so the same brightness and distance keep
+                    results steady.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="es-scr">
+              <div class="panel span-5 es-faq__panel" data-visual>
+                <div class="stage stage--fade-b">
+                  <div
+                    class="at-rise fit"
+                    style="
+                      --ax: max(24px, 50% - 170px);
+                      --ay: 40px;
+                      --ay-sm: 24px;
+                      --fit-max: 340px;
+                    "
+                  >
+                    <div
+                      class="es-ui es-settings"
+                      data-ui
+                      role="img"
+                      aria-label="The extension's settings: EyeScore on all websites, two sites turned off, and its data note"
+                    >
+                      <div class="es-settings__top">
+                        <span class="es-settings__back">&#8249; Back</span><b>Settings</b>
+                      </div>
+                      <div class="es-settings__row">
+                        <span>EyeScore on all websites</span
+                        ><span class="es-switch is-on" aria-hidden="true"></span>
+                      </div>
+                      <p class="es-settings__sum">Sites you turned off (2)</p>
+                      <ul class="es-settings__list">
+                        <li>
+                          <span>chess.com</span><span class="es-settings__link">Turn back on</span>
+                        </li>
+                        <li>
+                          <span>desmos.com</span><span class="es-settings__link">Turn back on</span>
+                        </li>
+                      </ul>
+                      <p class="es-settings__note">
+                        Your results and settings stay in this browser. EyeScore reads each page's
+                        text sizes and colors only to adjust them, and sends nothing anywhere.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer closing footer--statement" id="close" aria-labelledby="close-h">
+      <div class="wrap">
+        <div class="closing__cta close--type">
+          <div class="section-head">
+            <h2 id="close-h">Find your settings in four minutes</h2>
+            <p>Free, with no account. Your results stay in your browser.</p>
+          </div>
+          <a class="btn btn--primary btn--xl btn--wide" href="app.html#start"
+            >Start the 4-minute test<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true">
+              <path class="m-arrow__stem" d="M1 6h8" />
+              <path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5" /></svg
+          ></a>
+        </div>
+        <div class="closing__links">
+          <div class="grid">
+            <div class="span-4 stack-4">
+              <a class="nav__logo" href="#top"
+                ><img
+                  src="img/icon-180.png"
+                  alt=""
+                  width="24"
+                  height="24"
+                  loading="lazy"
+                />EyeScore</a
+              >
+              <p class="footer__lede">Screen settings measured for your eyes.</p>
+            </div>
+            <div class="span-2 footer__col">
+              <h4>Tests</h4>
+              <ul>
+                <li><a href="#tests">The three tests</a></li>
+                <li><a href="#rules">Rules</a></li>
+              </ul>
+            </div>
+            <div class="span-2 footer__col">
+              <h4>Extension</h4>
+              <ul>
+                <li><a href="#extension">On your websites</a></li>
+                <li><a href="#modes">Modes</a></li>
+              </ul>
+            </div>
+            <div class="span-2 footer__col">
+              <h4>Questions</h4>
+              <ul>
+                <li><a href="#faq">Answers</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+              </ul>
+            </div>
+            <div class="span-2 footer__col">
+              <h4>Your results</h4>
+              <ul>
+                <li><a href="app.html#results">See my results</a></li>
+                <li><a href="app.html#start">Retake the test</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer__legal">
+            <span>&copy; 2026 EyeScore &nbsp; <a href="privacy.html">Privacy</a></span>
+            <span class="muted">Not an eye exam.</span>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-</main>
+    </footer>
 
-<footer class="footer closing footer--statement" id="close" aria-labelledby="close-h">
-  <div class="wrap">
-    <div class="closing__cta close--type">
-      <div class="section-head">
-        <h2 id="close-h">Find your settings in four minutes</h2>
-        <p>Free, with no account. Your results stay in your browser.</p>
-      </div>
-      <a class="btn btn--primary btn--xl btn--wide" href="app.html#start">Start the 4-minute test<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
-    </div>
-    <div class="closing__links">
-      <div class="grid">
-        <div class="span-4 stack-4">
-          <a class="nav__logo" href="#top"><img src="img/icon-180.png" alt="" width="24" height="24" loading="lazy">EyeScore</a>
-          <p class="footer__lede">Screen settings measured for your eyes.</p>
-        </div>
-        <div class="span-2 footer__col"><h4>Tests</h4><ul><li><a href="#tests">The three tests</a></li><li><a href="#rules">Rules</a></li></ul></div>
-        <div class="span-2 footer__col"><h4>Extension</h4><ul><li><a href="#extension">On your websites</a></li><li><a href="#modes">Modes</a></li></ul></div>
-        <div class="span-2 footer__col"><h4>Questions</h4><ul><li><a href="#faq">Answers</a></li><li><a href="privacy.html">Privacy</a></li></ul></div>
-        <div class="span-2 footer__col"><h4>Your results</h4><ul><li><a href="app.html#results">See my results</a></li><li><a href="app.html#start">Retake the test</a></li></ul></div>
-      </div>
-      <div class="footer__legal">
-        <span>&copy; 2026 EyeScore &nbsp; <a href="privacy.html">Privacy</a></span>
-        <span class="muted">Not an eye exam.</span>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<script src="js/config.js"></script>
-<script src="js/landing.js"></script>
-<script type="module" src="assets/system.js"></script>
-<script type="module" src="assets/motion/motion.js"></script>
-<script type="module" src="assets/layout/layout.js"></script>
-</body>
+    <script src="js/config.js"></script>
+    <script src="js/landing.js"></script>
+    <script type="module" src="assets/system.js"></script>
+    <script type="module" src="assets/motion/motion.js"></script>
+    <script type="module" src="assets/layout/layout.js"></script>
+  </body>
 </html>
